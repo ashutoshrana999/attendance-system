@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate QR</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <h2>Attendify</h2>
+    </div>
+</div>
+
+<div class="main-area">
+
+    <div class="form-area">
+
+        <h2>Generate QR</h2>
+
+        <input type="text" id="qrName" placeholder="Enter QR Name">
+
+        <select id="qrType" class="qr-select">
+            <option value="static">Static QR</option>
+            <option value="dynamic">Dynamic QR</option>
+        </select>
+
+        <button id="generateBtn" class="btn btn-align gen-btn">Generate</button>
+
+    </div>
+
+</div>
+
+<!-- QR LIST -->
+<div class="qr-section">
+    <h2>Generated QRs</h2>
+    <div id="qrContainer"></div>
+</div>
+
+<script src="/js/admin.js"></script>
+
+</body>
+</html>
