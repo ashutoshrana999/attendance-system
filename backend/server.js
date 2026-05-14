@@ -32,7 +32,7 @@ app.use("/api", attendanceRoutes);
 
 // Default route - opens index.html when visiting the root URL
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname,"frontend", "index.html"));
+  res.sendFile(path.join(__dirname,"frontend", "register.html"));
 });
 
 // Optional health check route
