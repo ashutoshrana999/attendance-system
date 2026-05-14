@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve frontend files from the "public" folder
-app.use(express.static(path.join(__dirname, "/frontend")));
+app.use(express.static(path.join(__dirname, "frontend")));
 
 // MongoDB Atlas connection
 mongoose.connect(process.env.MONGO_URI)
@@ -32,7 +32,7 @@ app.use("/api", attendanceRoutes);
 
 // Default route - opens index.html when visiting the root URL
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname,"/frontend", "index.html"));
+  res.sendFile(path.join(__dirname,"frontend", "index.html"));
 });
 
 // Optional health check route
