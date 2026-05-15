@@ -20,7 +20,7 @@ register_btn.addEventListener("click", async function (e) {
     register_btn.textContent = "Registering...";
 
     try {
-        const res = await fetch( "https://attendance-system-1ghe.onrender.com/api/auth/register", {
+        const res = await fetch( "https://attendance-system-1ghe.onrender.com/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
