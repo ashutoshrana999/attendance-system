@@ -45,7 +45,7 @@ async function generateQR() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     try {
-        const res = await fetch("http://localhost:5000/api/generate-qr", {
+        const res = await fetch("https://attendance-system-1ghe.onrender.com/api/generate-qr", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
