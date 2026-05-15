@@ -1,3 +1,5 @@
+console.log("register.js loaded successfully");
+
 let register_btn = document.querySelector(".register-btn-form");
 
 register_btn.addEventListener("click", async function (e) {
