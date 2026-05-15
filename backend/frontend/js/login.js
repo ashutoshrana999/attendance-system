@@ -5,7 +5,7 @@ login_btn.addEventListener("click", async function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("pass").value;
 
-    const res = await fetch("http://localhost:5000/api/login", {
+    const res = await fetch("https://attendance-system-1ghe.onrender.com/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

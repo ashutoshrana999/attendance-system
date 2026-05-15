@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    const res = await fetch(`http://localhost:5000/api/admin-attendance/${user._id}`);
+    const res = await fetch(`https://attendance-system-1ghe.onrender.com/api/admin-attendance/${user._id}`);
     const data = await res.json();
 
     const container = document.getElementById("attendanceContainer");
