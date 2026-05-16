@@ -281,18 +281,24 @@ input:focus {
 
 .attendance-container {
   width: 100%;
-  margin-top: 20px;
+  max-width: 900px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;              /* Dynamic spacing between cards */
+  box-sizing: border-box;
 }
-
 /* Attendance Card */
 .att-card {
+  width: 100%;
   background: #8bb9eb;
-  border-radius: 0px;
-  padding: 15px;
-  margin: 10px 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: 0.3s;
   text-align: left;
+  margin: 0;              /* Remove fixed margin; gap handles spacing */
 }
 
 /* Hover */
@@ -303,21 +309,32 @@ input:focus {
 /* QR Name */
 .att-card h3 {
   color: #007bff;
-  margin-bottom: 5px;
+  margin: 0 0 12px 0;
+  font-size: 28px;
+  font-weight: 700;
 }
+
 
 /* Date text */
 .att-card p {
-  font-size: 14px;
-  margin: 3px 0;
+  font-size: 18px;
+  margin: 6px 0;
+  line-height: 1.5;
+  color: #111;
 }
-
 /* No data message */
+
+.att-card strong {
+  font-weight: 700;
+  color: #000;
+}
 .no-data {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 18px;
   color: #555;
+  text-align: center;
 }
+
 
 
 .scan-full{
