@@ -10,14 +10,13 @@ body {
 h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
 }
-.main-area{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-    
-  
+.main-area {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
+
 .navbar{
     display: flex;
    height: 90%;
@@ -485,4 +484,115 @@ input:focus {
     .info-section h2 {
         font-size: 2.3rem;
     }
+}
+/* ==========================================
+   FIX FOR ATTENDANCE CARD WIDTH ISSUE
+   Replace your current attendance CSS with this
+   ========================================== */
+
+/* Page container */
+.main-area {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Form wrapper */
+.form-area {
+  width: 100%;
+  max-width: 900px;   /* Controls the total width of all cards */
+  margin: 0 auto;     /* Centers the container */
+}
+
+/* Heading */
+.form-area h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Attendance container */
+.attendance-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;          /* Automatic spacing between cards */
+  margin-top: 20px;
+}
+
+/* Attendance card */
+.att-card {
+  width: 100%;
+  max-width: 100%;    /* Prevents cards from becoming larger than container */
+  background: #8bb9eb;
+  border-radius: 20px;
+  padding: 25px;
+  box-sizing: border-box; /* Includes padding inside width */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  text-align: left;
+  margin: 0;          /* Remove default margins */
+}
+
+/* Hover effect */
+.att-card:hover {
+  transform: translateY(-3px);
+}
+
+/* QR Name */
+.att-card h3 {
+  color: #007bff;
+  margin: 0 0 15px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Card text */
+.att-card p {
+  font-size: 18px;
+  margin: 8px 0;
+  line-height: 1.5;
+  color: #111;
+}
+
+/* Labels */
+.att-card strong {
+  font-weight: 700;
+  color: #000;
+}
+
+/* No attendance data */
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  padding: 30px 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .main-area {
+    padding: 15px;
+  }
+
+  .form-area {
+    max-width: 100%;
+  }
+
+  .attendance-container {
+    gap: 15px;
+  }
+
+  .att-card {
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  .att-card h3 {
+    font-size: 22px;
+  }
+
+  .att-card p {
+    font-size: 15px;
+  }
 }
