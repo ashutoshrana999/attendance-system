@@ -45,7 +45,7 @@ async function generateQR() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     try {
-        const res = await fetch("https://attendance-system-1ghe.onrender.com/api/generate-qr", {
+        const res = await fetch("/api/generate-qr", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -94,7 +94,7 @@ async function loadQRCodes() {
 
     try {
         const res = await fetch(
-            `http://localhost:5000/api/admin-qr/${user._id}`
+            `/api/admin-qr/${user._id}`
         );
 
         const data = await res.json();
@@ -150,7 +150,7 @@ function startDynamicRefresh(qrName) {
 
     dynamicInterval = setInterval(async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/generate-qr", {
+            const res = await fetch("/api/generate-qr", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -199,7 +199,7 @@ async function deleteQR(qrId) {
 
     try {
         const res = await fetch(
-            `http://localhost:5000/api/delete-qr/${qrId}`,
+            `/api/delete-qr/${qrId}`,
             {
                 method: "DELETE"
             }
