@@ -26,9 +26,20 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const date = new Date(item.scannedAt);
 
+        const inTime = item.inTime
+            ? new Date(item.inTime).toLocaleTimeString()
+            : "-";
+
+        const outTime = item.outTime
+            ? new Date(item.outTime).toLocaleTimeString()
+            : "-";
+
         div.innerHTML = `
             <h3>${item.qrName}</h3>
-            <p>${date.toLocaleString()}</p>
+            <p><strong>Date:</strong> ${item.date}</p>
+            <p><strong>Visit:</strong> ${item.visitNumber}</p>
+            <p><strong>In Time:</strong> ${inTime}</p>
+            <p><strong>Out Time:</strong> ${outTime}</p>
         `;
 
         container.appendChild(div);

@@ -3,59 +3,74 @@ const router = express.Router();
 const Attendance = require("../models/Attendance");
 const Qr = require("../models/Qr");
 
-// scan qr api
 router.post("/scan", async (req, res) => {
-  try {
-    const { userId, userName, qrId } = req.body;
+    try {
+        const { userId, userName, qrId } = req.body;
 
-    
-    // find QR
-      const qr = await Qr.findOne({ qrId });
+        // Find QR
+        const qr = await Qr.findOne({ qrId });
 
-      if (!qr) {
-        return res.json({ message: "Invalid QR" });
-      }
+        if (!qr) {
+            return res.json({ message: "Invalid QR" });
+        }
 
-      // CHECK DYNAMIC QR EXPIRY
-      if (qr.type === "dynamic" && qr.expiresAt < new Date()) {
-        return res.json({ message: "QR Expired" });
-      }
+        // Check dynamic QR expiry
+        if (qr.type === "dynamic" && qr.expiresAt < new Date()) {
+            return res.json({ message: "QR Expired" });
+        }
 
-    
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+        // Today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split("T")[0];
 
-    const todayEnd = new Date();
-    todayEnd.setHours(23, 59, 59, 999);
+        // Find latest visit for this user and QR on today's date
+        const lastVisit = await Attendance.findOne({
+            userId,
+            qrName: qr.qrName,
+            date: today
+        }).sort({ visitNumber: -1 });
 
-    const exists = await Attendance.findOne({
-      userId,
-      qrId,
-      scannedAt: {
-        $gte: todayStart,
-        $lte: todayEnd
-      }
-    });
+        // CASE 1: No visit exists OR previous visit already has outTime
+        if (!lastVisit || lastVisit.outTime) {
+            const visitNumber = lastVisit
+                ? lastVisit.visitNumber + 1
+                : 1;
 
-    if (exists) {
-      return res.json({ message: "Already marked for today" });
+            const newAttendance = new Attendance({
+                userId,
+                userName,
+                qrId,
+                qrName: qr.qrName,
+                date: today,
+                visitNumber,
+                inTime: new Date(),
+                outTime: null
+            });
+
+            await newAttendance.save();
+
+            return res.json({
+                message: `Visit ${visitNumber} Started`,
+                type: "IN"
+            });
+        }
+
+        // CASE 2: Previous visit exists without outTime → mark OUT
+        lastVisit.outTime = new Date();
+        lastVisit.scannedAt = new Date();
+
+        await lastVisit.save();
+
+        res.json({
+            message: `Visit ${lastVisit.visitNumber} Ended`,
+            type: "OUT"
+        });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: "Error marking attendance"
+        });
     }
-
-    // save attendance
-    const newAttendance = new Attendance({
-      userId,
-      userName,
-      qrId,
-      qrName: qr.qrName
-    });
-
-    await newAttendance.save();
-
-    res.json({ message: "Attendance Marked" });
-
-  } catch (err) {
-    res.status(500).json({ message: "Error marking attendance" });
-  }
 });
 
 router.get("/user-attendance/:userId", async (req, res) => {

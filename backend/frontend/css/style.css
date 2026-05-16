@@ -323,3 +323,149 @@ input:focus {
 .scan-full{
     height: 100vh;
 }
+/* ========================================
+   LANDING PAGE SECTIONS
+======================================== */
+
+/* Hero Section */
+.hero-section {
+    width: 90%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 1000px;
+    padding: 60px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.hero-card h1 {
+    font-size: 2.5rem;
+    color: #1277d6;
+    margin-bottom: 20px;
+}
+
+.hero-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    color: #555;
+}
+
+/* Common Section */
+.info-section {
+    width: 90%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    color: #1277d6;
+    margin-bottom: 40px;
+}
+
+/* Feature Cards */
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.feature-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* How It Works Steps */
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.step {
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    font-weight: 600;
+    color: #1277d6;
+}
+
+/* Technology Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tech-stack span {
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    color: #1277d6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Role Select */
+.role-select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* Registration Section Spacing */
+#register-section {
+    margin-top: 40px;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .feature-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .hero-card h1 {
+        font-size: 3rem;
+    }
+
+    .info-section h2 {
+        font-size: 2.3rem;
+    }
+}

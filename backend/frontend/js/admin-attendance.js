@@ -24,13 +24,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     const div = document.createElement("div");
     div.classList.add("att-card");
 
-    const date = new Date(item.scannedAt);
+            const date = new Date(item.scannedAt);
 
-    div.innerHTML = `
-        <h3>${item.qrName}</h3>
-        <p><strong>Name:</strong> ${item.userName}</p>
-        <p><strong>Date:</strong> ${date.toLocaleString()}</p>
-    `;
+        const inTime = item.inTime
+            ? new Date(item.inTime).toLocaleTimeString()
+            : "-";
+
+        const outTime = item.outTime
+            ? new Date(item.outTime).toLocaleTimeString()
+            : "-";
+
+        div.innerHTML = `
+            <h3>${item.qrName}</h3>
+            <p><strong>User Name:</strong> ${item.userName}</p>
+            <p><strong>Date:</strong> ${item.date}</p>
+            <p><strong>Visit:</strong> ${item.visitNumber}</p>
+            <p><strong>In Time:</strong> ${inTime}</p>
+            <p><strong>Out Time:</strong> ${outTime}</p>
+        `;
 
     container.appendChild(div);
 });
