@@ -27,7 +27,7 @@ async function onScanSuccess(decodedText) {
         }
 
         // Send attendance request
-        const response = await fetch("/api/mark-attendance", {
+        const response = await fetch("/api/scan", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
